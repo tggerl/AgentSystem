@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- Globally enables or disables any caches configured in any mapper under this configuration -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- Sets the number of seconds the driver will wait for a response from the database -->
+        <setting name="defaultStatementTimeout" value="3000"/>
+        <!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- Allows JDBC support for generated keys. A compatible driver is required.
+        This setting forces generated keys to be used if set to true,
+         as some drivers deny compatibility but still work -->
+        <setting name="useGeneratedKeys" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.jbit.entity"/>
+    </typeAliases>
+    <!-- Continue going here -->
+    <mappers>
+        <mapper resource="Mapper/AsAccountdetailMapper.xml"></mapper>
+        <mapper resource="Mapper/AsAccountMapper.xml"></mapper>
+        <mapper resource="Mapper/AsContactsMapper.xml"></mapper>
+        <mapper resource="Mapper/AsCustomsMapper.xml"></mapper>
+        <mapper resource="Mapper/AsFunctionMapper.xml"></mapper>
+        <mapper resource="Mapper/AsKeywordsMapper.xml"></mapper>
+        <mapper resource="Mapper/AsLogsMapper.xml"></mapper>
+        <mapper resource="Mapper/AsRoleMapper.xml"></mapper>
+        <mapper resource="Mapper/AsRolePremissionMapper.xml"></mapper>
+        <mapper resource="Mapper/AsSystemconfigMapper.xml"></mapper>
+        <mapper resource="Mapper/AsUserMapper.xml"></mapper>
+        <mapper resource="Mapper/HatAreaMapper.xml"></mapper>
+        <mapper resource="Mapper/HatCityMapper.xml"></mapper>
+        <mapper resource="Mapper/HatProvinceMapper.xml"></mapper>
+
+    </mappers>
+
+</configuration>
