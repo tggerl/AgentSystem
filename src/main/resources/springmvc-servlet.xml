@@ -19,7 +19,11 @@
 
     <mvc:annotation-driven></mvc:annotation-driven>
 
-  <!--  <mvc:resources mapping="/statics/**" location="/statics/"></mvc:resources>-->
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <mvc:resources mapping="/imgs/**" location="/imgs/"></mvc:resources>
+    <mvc:resources mapping="/medire/**" location="/medire/"></mvc:resources>
+    <mvc:resources mapping="/alertframe/**" location="/alertframe/"></mvc:resources>
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"></property>
