@@ -35,6 +35,11 @@
     from as_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <!--登录系统-->
+  <select id="selectLogin" resultType="com.jbit.entity.AsUser">
+    SELECT * from as_user WHERE userCode=#{usercode} and userPassword=#{userpassword}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     <!--
       WARNING - @mbggenerated
@@ -182,4 +187,8 @@
       isStart = #{isstart,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+
 </mapper>

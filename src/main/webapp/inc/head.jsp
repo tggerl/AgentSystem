@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%--<%@taglib uri="/struts-tags" prefix="s"%>--%>
 <!DOCTYPE html>
 <html lang="cn">
 <head>
@@ -23,16 +23,16 @@
 	<li><h2><!--  <img src="/imgs/logo.png" width="130px"/> --></h2></li>
 	<li class="headfunc">
 		<ul>
-			<li>欢迎您：<s:property value="currentUser.userName"/>
+			<li>欢迎您：${currentUser.username}<%--<s:property value="currentUser.userName"/>--%>
 			<a class="modifypwd" id="modifypwdbtna">
 			修改密码
-			</a> <a href="${pageContext.request.contextPath }/exit.action">退出</a>
+			</a> <a href="${pageContext.request.contextPath }/exit">退出</a>
 			</li>
 		</ul>
 	</li>
 </ul>
 </div>
-        <s:iterator value="funcList" status="sta">
+<%--        <s:iterator value="funcList" status="sta">
             	<tr>
                     <td><s:property value="functionName"/></td>
                 
@@ -108,9 +108,8 @@
 				</s:else>
 			</s:iterator>	
 </ul>
-	</div>
+	</div>--%>
 
-<%--
 	<div id="menu">
 		<ul>
 			<li class="m_line"><img src="/imgs/line1.gif" /></li>
@@ -126,9 +125,9 @@
 			<li class="m_line"><img src="/imgs/line1.gif" /></li>
 		</ul>
 	</div>
-	-->
+	<%---->--%>
 	<!--menu end-->
-	<!--  
+
 	<div class="subbox">
 		<ul class="smenu">
 			<li style="padding-left:10px;" id="s_1" class='s_li_a'>
@@ -161,7 +160,7 @@
 				<a href="/youhuitype.action"  title="优惠类型管理">优惠类型</a>
 			</li>
 		</ul>
-	</div>--%>
+	</div>
 	<!--subbox end-->
 	
 	<div id="modifydiv" class="modifydiv">

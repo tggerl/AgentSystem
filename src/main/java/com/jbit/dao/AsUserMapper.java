@@ -1,6 +1,7 @@
 package com.jbit.dao;
 
 import com.jbit.entity.AsUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface AsUserMapper {
     /**
@@ -50,4 +51,12 @@ public interface AsUserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(AsUser record);
+
+    /**
+     * 登录系统
+     * @param usercode
+     * @param userpassword
+     * @return
+     */
+    AsUser selectLogin(@Param("usercode") String usercode,@Param("userpassword") String userpassword);
 }

@@ -17,7 +17,26 @@
 
     <context:component-scan base-package="com.jbit.controller"></context:component-scan>
 
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <!-- 开启springmvc注解 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!-- 配置Fastjson支持 -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <!-- 统一处理JSON返回的时间格式 默认是"yyyy-MM-dd HH:mm:ss" -->
+                <property name="features">
+                    <list>
+                        <value>WriteDateUseDateFormat</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
     <mvc:resources mapping="/imgs/**" location="/imgs/"></mvc:resources>
@@ -25,9 +44,31 @@
     <mvc:resources mapping="/alertframe/**" location="/alertframe/"></mvc:resources>
     <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"></property>
-        <property name="suffix" value=".jsp"></property>
+    <!-- 配置多视图解析器：允许同样的内容数据呈现不同的View -->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="favorParameter" value="true"></property>
+        <property name="defaultContentType" value="text/html"></property>
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html;charset=UTF-8"></entry>
+                <entry key="xml" value="application/xml;charset=UTF-8"></entry>
+                <entry key="json" value="application/json;charset=UTF-8"></entry>
+            </map>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/"></property>
+                    <property name="suffix" value=".jsp"></property>
+                </bean>
+            </list>
+        </property>
+        <!-- 实现同一页面根据不同的请求后缀来决定返回页面上的数据格式 JSON/HTML -->
+        <property name="defaultViews">
+            <list>
+                <bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView"></bean>
+            </list>
+        </property>
     </bean>
 
 </beans>

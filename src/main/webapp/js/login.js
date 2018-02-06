@@ -12,20 +12,24 @@ function validateLoginUserFunc(){
 		 alert("对不起，登录密码不能为空。");
 	}else{
 		$.ajax({
-			url: 'userAction!login.action',
+			/*userAction!login.action*/
+			url: 'selLogin',
 			type: 'POST',
 			async:false,
-			data:{'user.userCode':usercode,'user.userPassword':userpassword},
-			dataType: 'json',
+			data:{'usercode':usercode,'userpassword':userpassword},
+			dataType: 'text',
 			timeout: 5000,
-			error: function(){
+			/*error: function(){
 				alert("服务器连接失败.....");
-			},
+			},*/
 			success: function(obj){
-				if(obj.success){
+				if(obj=="success"){
 					flag = true;
+				}else {
+					flag=false;
+					alert(obj);
 				}
-				alert(obj.message);
+			/*	alert(obj.message);*/
 			}
 			});
 	}
